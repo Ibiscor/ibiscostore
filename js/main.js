@@ -1,57 +1,118 @@
 console.log("IBISCO Loaded");
 
+/* ==========================
+   HERO SLIDER
+========================== */
+
 const slides = document.querySelectorAll(".slide");
 const dots = document.querySelectorAll(".dot");
 
-let currentSlide = 0;
+if (slides.length > 0 && dots.length > 0) {
 
-function showSlide(index){
+    let currentSlide = 0;
 
-    // എല്ലാ slides hide ചെയ്യുന്നു
-    slides.forEach(slide=>{
-        slide.classList.remove("active");
-    });
+    function showSlide(index) {
 
-    // എല്ലാ dots inactive ആക്കുന്നു
-    dots.forEach(dot=>{
-        dot.classList.remove("active");
-    });
+        slides.forEach(slide => {
+            slide.classList.remove("active");
+        });
 
-    // Current slide show ചെയ്യുന്നു
-    slides[index].classList.add("active");
+        dots.forEach(dot => {
+            dot.classList.remove("active");
+        });
 
-    // Current dot highlight ചെയ്യുന്നു
-    dots[index].classList.add("active");
-
-}
-
-function nextSlide(){
-
-    currentSlide++;
-
-    if(currentSlide >= slides.length){
-        currentSlide = 0;
+        slides[index].classList.add("active");
+        dots[index].classList.add("active");
     }
+
+    function nextSlide() {
+
+        currentSlide++;
+
+        if (currentSlide >= slides.length) {
+            currentSlide = 0;
+        }
+
+        showSlide(currentSlide);
+    }
+
+    dots.forEach((dot, index) => {
+
+        dot.addEventListener("click", () => {
+
+            currentSlide = index;
+
+            showSlide(currentSlide);
+
+        });
+
+    });
 
     showSlide(currentSlide);
 
+    setInterval(nextSlide, 4000);
+
 }
 
-// ഓരോ dot-ലും click support
-dots.forEach((dot,index)=>{
 
-    dot.addEventListener("click",()=>{
+/* ==========================
+   PRODUCT FILTER
+========================== */
 
-        currentSlide = index;
+const filters = document.querySelectorAll('.filter-sidebar input[type="radio"]');
+const productCards = document.querySelectorAll(".product-link");
 
-        showSlide(currentSlide);
+if (filters.length > 0 && productCards.length > 0) {
+
+   filters.forEach(filter => {
+
+    filter.addEventListener("change", function () {
+
+        const value = this.value;
+
+        productCards.forEach(product => {
+
+            const category = product.querySelector(".product-card").dataset.category;
+
+            if (value === "all" || category === value) {
+
+                product.style.display = "block";
+
+            } else {
+
+                product.style.display = "none";
+
+            }
+
+        });
 
     });
 
 });
 
-// ആദ്യം first slide കാണിക്കുന്നു
-showSlide(currentSlide);
+}
 
-// ഓരോ 4 seconds-നും slide മാറും
-setInterval(nextSlide,4000);
+// =========================================
+// Dynamic Product Loader
+// =========================================
+
+// Load first product from products.js
+
+const product = products[0];
+
+// Product Name
+document.getElementById("product-name").textContent = product.name;
+
+// Collection
+document.getElementById("product-collection").textContent = product.collection;
+
+// Prices
+document.getElementById("new-price").textContent = "₹" + product.price;
+
+document.getElementById("old-price").textContent = "₹" + product.oldPrice;
+
+// Description
+document.getElementById("product-description").textContent = product.description;
+
+// Main Image
+document.getElementById("main-image").src = product.images[0];

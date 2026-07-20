@@ -98,3 +98,41 @@ nav a{
   border-radius:5px;
   cursor:pointer;
 }
+
+/* =========================================
+   More From IBISCO
+========================================= */
+
+.related-products{
+
+    margin-top:80px;
+
+}
+
+.related-products h2{
+
+    font-size:34px;
+
+    color:#111;
+
+    margin-bottom:10px;
+
+}
+
+.related-subtitle{
+
+    color:#777;
+
+    margin-bottom:35px;
+
+}
+
+.related-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:25px;
+
+}
