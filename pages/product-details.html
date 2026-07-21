@@ -198,7 +198,7 @@
 
                     ⭐⭐⭐⭐⭐
 
-                    <strong>4.9 / 5</strong>
+                    <strong id="product-rating">4.9 / 5</strong>
 
                 </p>
 
@@ -220,7 +220,7 @@
 
             </div>
 
-            <p class="discount-text">
+            <p class="discount-text" id="product-discount">
 
                 Save 20%
 
@@ -235,19 +235,25 @@
                 <h3>Select Size</h3>
 
                 <div class="size-options">
+ 
+                   <button class="size-btn">S</button>
 
-                    <button>S</button>
+                   <button class="size-btn">M</button>
 
-                    <button>M</button>
+                   <button class="size-btn">L</button>
 
-                    <button>L</button>
+                   <button class="size-btn">XL</button>
 
-                    <button>XL</button>
-
-                    <button>XXL</button>
+                   <button class="size-btn">XXL</button>
 
                 </div>
 
+           <p id="selected-size">
+
+             Selected Size : M
+
+           </p>
+           
             </div>
 
             <!-- =========================================
@@ -284,7 +290,7 @@
 
                         <strong>Material</strong>
 
-                        <p>Premium Cotton</p>
+                       <p id="product-material">Premium Cotton</p>
 
                     </div>
 
@@ -292,7 +298,7 @@
 
                         <strong>Fit</strong>
 
-                        <p>Regular Fit</p>
+                        <p id="product-fit">Regular Fit</p>
 
                     </div>
 
@@ -300,7 +306,7 @@
 
                         <strong>Sleeves</strong>
 
-                        <p>Half Sleeve</p>
+                       <p id="product-sleeve">Half Sleeve</p>
 
                     </div>
 
@@ -308,7 +314,7 @@
 
                         <strong>Neck</strong>
 
-                        <p>Round Neck</p>
+                        <p id="product-neck">Round Neck</p>
 
                     </div>
 
@@ -316,7 +322,7 @@
 
                         <strong>Wash Care</strong>
 
-                        <p>Machine Wash</p>
+                       <p id="product-wash">Machine Wash</p>
 
                     </div>
 
@@ -331,6 +337,22 @@
                 </div>
 
             </div>
+
+            <!-- =========================================
+     Stock Status
+========================================= -->
+
+<div class="stock-card">
+
+    <h2>Availability</h2>
+
+    <p id="product-stock-status">
+
+        ✅ In Stock
+
+    </p>
+
+</div>
 
             <!-- =========================================
                  Delivery Information

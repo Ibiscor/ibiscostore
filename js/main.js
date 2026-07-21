@@ -96,9 +96,30 @@ if (filters.length > 0 && productCards.length > 0) {
 // Dynamic Product Loader
 // =========================================
 
-// Load first product from products.js
+// =========================================
+// Get Product ID From URL
+// =========================================
 
-const product = products[0];
+// Example:
+// product-details.html?id=tshirt
+
+const urlParams = new URLSearchParams(window.location.search);
+
+const productId = urlParams.get("id");
+
+// Find matching product
+
+const product = products.find(item => item.id === productId);
+
+// If no product found
+
+if (!product) {
+
+    alert("Product Not Found");
+
+    window.location.href = "men.html";
+
+}
 
 // Product Name
 document.getElementById("product-name").textContent = product.name;
@@ -116,3 +137,85 @@ document.getElementById("product-description").textContent = product.description
 
 // Main Image
 document.getElementById("main-image").src = product.images[0];
+
+
+// Material
+document.getElementById("product-material").textContent = product.material;
+
+// Fit
+document.getElementById("product-fit").textContent = product.fit;
+
+// Neck
+document.getElementById("product-neck").textContent = product.neck;
+
+// Sleeve
+document.getElementById("product-sleeve").textContent = product.sleeve;
+
+// Wash Care
+document.getElementById("product-wash").textContent = product.wash;
+
+// Product Rating
+document.getElementById("product-rating").textContent =
+product.rating + " / 5";
+
+// Product Discount
+document.getElementById("product-discount").textContent =
+"Save " + product.discount + "%";
+
+// =========================================
+// Product Stock Status
+// =========================================
+
+const stockStatus = document.getElementById("product-stock-status");
+
+if (product.stock > 10) {
+
+    stockStatus.textContent =
+    "✅ In Stock (" + product.stock + " Available)";
+
+}
+
+else if (product.stock > 0) {
+
+    stockStatus.textContent =
+    "⚠️ Only " + product.stock + " Left";
+
+}
+
+else {
+
+    stockStatus.textContent =
+    "❌ Out of Stock";
+
+}
+
+// =========================================
+// Size Selection
+// =========================================
+
+const sizeButtons = document.querySelectorAll(".size-btn");
+
+const selectedSize = document.getElementById("selected-size");
+
+sizeButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        sizeButtons.forEach(btn => {
+
+            btn.classList.remove("active");
+
+        });
+
+        button.classList.add("active");
+
+        selectedSize.textContent =
+        "Selected Size : " + button.textContent;
+
+    });
+
+});
+
+// Default Selected Size
+
+sizeButtons[1].classList.add("active");

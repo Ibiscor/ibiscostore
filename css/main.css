@@ -1031,6 +1031,30 @@ body{
 
 }
 
+/* Active Selected Size */
+
+.size-btn.active{
+
+    background:#111;
+
+    color:#fff;
+
+    border-color:#111;
+
+}
+
+/* Selected Size Text */
+
+#selected-size{
+
+    margin-top:15px;
+
+    color:#555;
+
+    font-weight:600;
+
+}
+
 /* =========================================
    QUANTITY
 ========================================= */
