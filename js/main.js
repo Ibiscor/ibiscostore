@@ -296,7 +296,26 @@ if (addCartBtn && product) {
         let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
         // Add New Product
-        cart.push(cartItem);
+        // Check if same product & same size already exists
+
+const existingProduct = cart.find(item =>
+
+    item.id === cartItem.id &&
+    item.size === cartItem.size
+
+);
+
+if (existingProduct) {
+
+    existingProduct.quantity += cartItem.quantity;
+
+}
+
+else {
+
+    cart.push(cartItem);
+
+}
 
         // Save Cart
         localStorage.setItem("cart", JSON.stringify(cart));
