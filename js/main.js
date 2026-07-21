@@ -219,3 +219,50 @@ sizeButtons.forEach(button => {
 // Default Selected Size
 
 sizeButtons[1].classList.add("active");
+
+// =========================================
+// Quantity Selector
+// =========================================
+
+console.log("Reached Quantity Section");
+
+const minusBtn = document.getElementById("minus-btn");
+const plusBtn = document.getElementById("plus-btn");
+const quantityValue = document.getElementById("quantity-value");
+
+// Run only if Quantity section exists
+if (minusBtn && plusBtn && quantityValue && product) {
+
+    let quantity = 1;
+
+    // Minus Button
+    minusBtn.addEventListener("click", () => {
+
+        console.log("MINUS CLICKED");
+
+        if (quantity > 1) {
+
+            quantity--;
+
+            quantityValue.textContent = quantity;
+
+        }
+
+    });
+
+    // Plus Button
+    plusBtn.addEventListener("click", () => {
+
+        console.log("PLUS CLICKED");
+
+        if (quantity < product.stock) {
+
+            quantity++;
+
+            quantityValue.textContent = quantity;
+
+        }
+
+    });
+
+}

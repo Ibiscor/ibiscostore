@@ -21,9 +21,9 @@ const products = [
 
         discount: 20,
 
-        rating: 4.9,
+        rating: 3,
 
-        stock: 0,
+        stock: 5,
 
         description: "Crafted with premium cotton fabric for superior comfort and everyday style.",
 
