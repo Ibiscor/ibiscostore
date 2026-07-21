@@ -220,6 +220,8 @@ sizeButtons.forEach(button => {
 
 sizeButtons[1].classList.add("active");
 
+let quantity = 1;
+
 // =========================================
 // Quantity Selector
 // =========================================
@@ -232,8 +234,6 @@ const quantityValue = document.getElementById("quantity-value");
 
 // Run only if Quantity section exists
 if (minusBtn && plusBtn && quantityValue && product) {
-
-    let quantity = 1;
 
     // Minus Button
     minusBtn.addEventListener("click", () => {
@@ -262,6 +262,49 @@ if (minusBtn && plusBtn && quantityValue && product) {
             quantityValue.textContent = quantity;
 
         }
+
+    });
+
+}
+
+// =========================================
+// Add To Cart
+// =========================================
+
+const addCartBtn = document.getElementById("add-cart-btn");
+
+if (addCartBtn && product) {
+
+    addCartBtn.addEventListener("click", () => {
+
+        // Selected Size
+        const activeSize = document.querySelector(".size-btn.active");
+
+        // Cart Item
+        const cartItem = {
+
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            image: product.images[0],
+            size: activeSize ? activeSize.textContent : "M",
+            quantity: quantity
+
+        };
+
+        // Get Existing Cart
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        // Add New Product
+        cart.push(cartItem);
+
+        // Save Cart
+        localStorage.setItem("cart", JSON.stringify(cart));
+
+        // Success Message
+        alert("✅ Product Added To Cart");
+
+        console.log(cart);
 
     });
 
